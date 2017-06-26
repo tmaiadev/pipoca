@@ -44,7 +44,7 @@ class Pipoca {
                     container: this.containers.playback,
                     events: this.events,
                     EVENTS: EVENTS,
-                    source: this.options.source
+                    options: this.options
                 });
                 break;
             }
