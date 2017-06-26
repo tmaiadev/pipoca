@@ -37,20 +37,23 @@ export const CONTROLS_SHOWN = 'CONTROLS_SHOWN';
 // When controls are hidden
 export const CONTROLS_HIDDEN = 'CONTROLS_HIDDEN';
 
-// When user request play
+// When user requests play
 export const REQUEST_PLAY = 'REQUEST_PLAY';
 
-// When user request pause
+// When user requests pause
 export const REQUEST_PAUSE = 'REQUEST_PAUSE';
 
-// When user request seek
+// When user requests seek
 export const REQUEST_SEEK = 'REQUEST_SEEK';
 
-// When user request volume changes
+// When user requests volume changes
 export const REQUEST_VOUME = 'REQUEST_VOLUME';
 
-// When user request framerate changes
+// When user requests framerate changes
 export const REQUEST_FRAMERATE = 'REQUEST_FRAMERATE';
 
-// When user request to see the controls
+// When user requests to see the controls
 export const REQUEST_CONTROLS = 'REQUEST_CONTROLS';
+
+// When user requests fullscreen
+export const REQUEST_FULLSCREEN = 'REQUEST_FULLSCREEN';
