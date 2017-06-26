@@ -45,6 +45,7 @@ class Pipoca {
                     events: this.events,
                     EVENTS: EVENTS
                 });
+                break;
             }
         }
 
@@ -54,8 +55,8 @@ class Pipoca {
         return EVENTS;
     }
 
-    static get Playback() {
-        return Playback;
+    static get DefaultPlayback() {
+        return DefaultPlayback;
     }
 
     _extractOptions(userOptions) {
