@@ -43,7 +43,8 @@ class Pipoca {
                 playback = new (pb)({
                     container: this.containers.playback,
                     events: this.events,
-                    EVENTS: EVENTS
+                    EVENTS: EVENTS,
+                    source: this.options.source
                 });
                 break;
             }
