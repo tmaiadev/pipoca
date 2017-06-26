@@ -15,7 +15,8 @@ export default class {
         // When window is resized, resize element
         window.addEventListener('resize', this._calcSize.bind(this));
 
-        // Append element to parent
+        // Clear parent and append element to parent
+        this._options.parent.innerHTML = '';
         this._options.parent.appendChild(this.element);
     }
 
