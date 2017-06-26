@@ -1,7 +1,7 @@
 import d from 'thalleshmm-dom';
 import controlsContainer from './controls';
 import playbackContainer from './playback';
-import { REQUEST_FULLSCREEN } from '../constants/events';
+import { REQUEST_FULLSCREEN } from '../../constants/events';
 
 export default class {
     constructor({ options, events }) {
