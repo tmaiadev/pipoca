@@ -1,9 +1,10 @@
 import d from 'thalleshmm-dom';
 import controlsContainer from './controls';
 import playbackContainer from './playback';
+import { REQUEST_FULLSCREEN } from '../constants/events';
 
 export default class {
-    constructor({ options }) {
+    constructor({ options, events }) {
         this._options = options;
         this.element = d('div', 'pipoca-root', [
             playbackContainer, controlsContainer
@@ -11,6 +12,9 @@ export default class {
         this.playback = playbackContainer;
         this.controls = controlsContainer;
         this._calcSize();
+
+        // Listens to fullscreen request
+        events.listen(REQUEST_FULLSCREEN, this.enterFullscreen);
 
         // When window is resized, resize element
         window.addEventListener('resize', this._calcSize.bind(this));
@@ -33,5 +37,12 @@ export default class {
         // Set elemnt style
         this.element.style.width = width + 'px';
         this.element.style.height = height + 'px';
+    }
+
+    enterFullscreen() {
+        const requestFullscreen = this.element.requestFullscreen || this.element.msRequestFullscreen ||
+            this.element.mozRequestFullScreen || this.element.webkitRequestFullscreen;
+
+        if (requestFullscreen) requestFullscreen();
     }
 }
