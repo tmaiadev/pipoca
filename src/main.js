@@ -1,5 +1,6 @@
 import Events from 'thalleshmm-events';
 import * as EVENTS from './constants/events';
+import * as LANG from './constants/lang';
 import RootContainer from './components/containers/root';
 import DefaultPlayback from './playback/default';
 
@@ -7,6 +8,7 @@ class Pipoca {
 
     constructor(options) {
         this.options = this._extractOptions(options);
+        this.lang = LANG;
         this.events = new Events();
 
         // We initialize the root container
