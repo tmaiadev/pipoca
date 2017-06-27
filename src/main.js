@@ -3,6 +3,7 @@ import * as EVENTS from './constants/events';
 import * as LANG from './constants/lang';
 import RootContainer from './components/containers/root';
 import DefaultPlayback from './playback/default';
+import Controls from './components/controls/main';
 
 class Pipoca {
 
@@ -23,6 +24,17 @@ class Pipoca {
             playback: rootContainer.playback,
             controls: rootContainer.controls
         };
+
+        // Initialize the controls
+        let controls = this.options.controls ?
+            this.options.controls : Controls;
+
+        this.controls = new (controls)({
+            EVENTS: EVENTS,
+            events: this.events,
+            container: this.containers.controls,
+            lang: this.lang
+        });
 
         // List of possible playback handlers
         let playbackList = [DefaultPlayback];
@@ -46,7 +58,8 @@ class Pipoca {
                     container: this.containers.playback,
                     events: this.events,
                     EVENTS: EVENTS,
-                    options: this.options
+                    options: this.options,
+                    lang: this.lang
                 });
                 break;
             }
@@ -109,6 +122,12 @@ class Pipoca {
         if (userOptions.playback) {
             if (typeof userOptions.playback === "function") {
                 options.playback = userOptions.playback;
+            }
+        }
+
+        if (userOptions.controls) {
+            if (typeof userOptions.controls === "function") {
+                options.controls = userOptions.controls;
             }
         }
 

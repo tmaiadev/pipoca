@@ -1,0 +1,25 @@
+.pipoca-controls__face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border: none;
+    cursor: pointer;
+    background-position: center center;
+    color: #FFF;
+    fill: currentColor;
+    background-size: cover;
+    background-color: #000;
+}
+
+.pipoca-controls__face svg {
+    width: 100px;
+}
+
+.pipoca-controls__face--hidden {
+    display: none;
+}
