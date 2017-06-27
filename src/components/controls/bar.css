@@ -1,0 +1,19 @@
+.pipoca-controls__bar {
+    display: block;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, .7);
+    backdrop-filter: blur(5px);
+    will-change: transform;
+    transform: translateY(100%);
+    transition: transform .3s ease-in-out;
+}
+
+.pipoca-controls__bar--active {
+    transform: translateY(0%);
+}

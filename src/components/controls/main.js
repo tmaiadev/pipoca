@@ -1,6 +1,7 @@
 import d from 'thalleshmm-dom';
-import { READY } from '../../constants/events';
+import { READY, REQUEST_CONTROLS } from '../../constants/events';
 import Face from './face';
+import Bar from './bar';
 
 export default class Controls {
     constructor({ events, container, lang }) {
@@ -12,10 +13,13 @@ export default class Controls {
 
     render() {
         const face = new Face(this);
+        const bar = new Bar(this);
 
         const controls = d('div', 'pipoca-controls__wrapper', [
-            face.element
+            face.element, bar.element
         ]);
+
+        controls.addEventListener('mousemove', () => this.events.dispatch(REQUEST_CONTROLS));
 
         this.container.appendChild(controls);
     }
