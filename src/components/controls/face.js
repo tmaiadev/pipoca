@@ -10,8 +10,7 @@ export default class Face {
     }
 
     render() {
-        this.element = d('button', 'pipoca-controls__face');
-        this.element.innerHTML = ICONS.PLAY;
+        this.element = d('button', 'pipoca-controls__face', ICONS.PLAY);
         this.element.addEventListener('click', this.onClick.bind(this));
     }
 

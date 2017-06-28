@@ -11,12 +11,12 @@
     cursor: pointer;
     background-position: center center;
     color: #FFF;
-    fill: currentColor;
     background-size: cover;
     background-color: #000;
 }
 
 .pipoca-controls__face svg {
+    fill: currentColor;
     width: 100px;
 }
 
