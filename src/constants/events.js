@@ -37,6 +37,11 @@ export const CONTROLS_SHOWN = 'CONTROLS_SHOWN';
 // When controls are hidden
 export const CONTROLS_HIDDEN = 'CONTROLS_HIDDEN';
 
+// When user requests play for when playback is paused
+// or pause for when playback is playing, agnostic of
+// the playback status
+export const REQUEST_PLAY_PAUSE = 'REQUEST_PLAY_PAUSE'
+
 // When user requests play
 export const REQUEST_PLAY = 'REQUEST_PLAY';
 
