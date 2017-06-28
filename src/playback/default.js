@@ -21,6 +21,8 @@ export default class DefaultPlayback {
 
     listenToEvents() {
         this.events.listen(EVENTS.REQUEST_PLAY, this.play.bind(this));
+        this.events.listen(EVENTS.PAUSE, this.pause.bind(this));
+        this.events.listen(EVENTS.REQUEST_PLAY_PAUSE, this.togglePlay.bind(this));
     }
 
     render() {
@@ -32,12 +34,34 @@ export default class DefaultPlayback {
         this.container.appendChild(video);
         this.element = video;
 
-        video.addEventListener('playing', () => {
-            this.events.dispatch(EVENTS.PLAYING);
+        video.addEventListener('playing', () => this.events.dispatch(EVENTS.PLAYING));
+        video.addEventListener('pause', () => this.events.dispatch(EVENTS.PAUSE));
+        video.addEventListener('error', () => this.events.dispatch(EVENTS.ERROR));
+        video.addEventListener('ratechange', () => {
+            this.events.dispatch(EVENTS.FRAMERATE_CHANGED, parseInt(video.playbackRate * 100));
         });
+        video.addEventListener('volumechange', () => {
+            this.events.dispatch(EVENTS.VOLUME_CHANGED, parseInt(video.volume * 100));
+        });
+    }
+
+    isPlaying() {
+        return !this.element.paused;
     }
 
     play() {
         this.element.play();
+    }
+
+    pause() {
+        this.element.pause();
+    }
+
+    togglePlay() {
+        if (this.isPlaying()) {
+            this.pause();
+        } else {
+            this.play();
+        }
     }
 }

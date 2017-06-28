@@ -1,5 +1,5 @@
 import d from 'thalleshmm-dom';
-import { READY, REQUEST_CONTROLS } from '../../constants/events';
+import { READY, REQUEST_CONTROLS, REQUEST_PLAY_PAUSE } from '../../constants/events';
 import Face from './face';
 import Bar from './bar';
 
@@ -8,19 +8,29 @@ export default class Controls {
         this.events = events;
         this.container = container;
         this.lang = lang;
-        events.listen(READY, this.render.bind(this));
+        this.bar = null;
+        events.listen(READY, this._initialize.bind(this));
     }
 
-    render() {
+    _initialize() {
         const face = new Face(this);
         const bar = new Bar(this);
 
-        const controls = d('div', 'pipoca-controls__wrapper', [
+        const wrapper = d('div', 'pipoca-controls__wrapper', [
             face.element, bar.element
         ]);
 
-        controls.addEventListener('mousemove', () => this.events.dispatch(REQUEST_CONTROLS));
+        wrapper.addEventListener('mousemove', this._onActivity.bind(this));
+        wrapper.addEventListener('click', this._onClick.bind(this));
+        this.container.appendChild(wrapper);
+    }
 
-        this.container.appendChild(controls);
+    _onActivity() {
+        this.events.dispatch(REQUEST_CONTROLS);
+    }
+
+    _onClick() {
+        this._onActivity();
+        this.events.dispatch(REQUEST_PLAY_PAUSE);
     }
 }
