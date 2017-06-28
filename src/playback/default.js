@@ -28,7 +28,8 @@ export default class DefaultPlayback {
     render() {
         const video = d('video', {
             src: this.options.source,
-            className: 'pipoca-playback__video'
+            className: 'pipoca-playback__video',
+            playsinline: ''
         });
 
         this.container.appendChild(video);
