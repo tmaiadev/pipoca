@@ -2,10 +2,11 @@ import { REQUEST_CONTROLS } from '../../constants/events';
 import d from 'thalleshmm-dom';
 
 export default class Bar {
-    constructor({ events }) {
+    constructor({ events, lang }) {
         this.lastActivity = 0;
         this.hideTime = 3000;
-        this.element = d('div', 'pipoca-controls__bar');
+        this.wrapper = d('div', 'pipoca-controls__bar__wrapper');
+        this.element = d('div', 'pipoca-controls__bar', this.wrapper);
 
         // Show controls when requested
         events.listen(REQUEST_CONTROLS, this.show.bind(this));
