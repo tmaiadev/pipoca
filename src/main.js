@@ -81,6 +81,8 @@ class Pipoca {
             parent: null,
             width: null,
             height: null,
+            playback: null,
+            controls: null,
             volume: 100
         };
 
@@ -130,6 +132,13 @@ class Pipoca {
                 options.controls = userOptions.controls;
             }
         }
+
+        // Custom options
+        Object.keys(userOptions).forEach(key => {
+            // If user key is not set, set as option
+            if (key in options) return;
+            options[key] = userOptions[key];
+        });
 
         return options;
     }

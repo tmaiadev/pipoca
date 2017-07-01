@@ -35,4 +35,9 @@ export default class Bar {
         this.lastActivity = new Date();
         this.element.classList.add('pipoca-controls__bar--active');
     }
+
+    render(items) {
+        this.wrapper.innerHTML = '';
+        items.forEach(item => this.wrapper.appendChild(items));
+    }
 }
